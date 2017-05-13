@@ -5,33 +5,34 @@
 #include <sstream>
 using namespace std;
 
-#define n 2 //17
-#define n_sq 4 //289
+#define n 3 //17
+#define n_sq 9 //289
 
 
 int makeFile() {
 
 	ofstream myfile;
-	int64_t ans = n_sq + n + 1;
+	int ans = n_sq + n + 1;
 	stringstream ss;
 	ss << ans;
 	string str = ss.str();
 	myfile.open("solFor" + str + "m.txt");
 
-	int64_t count = n + 1;
-	int64_t incidenceArr[n_sq + n + 1][n_sq + n + 1];
+	int count = n + 1;
+	//int64_t incidenceArr[n_sq + n + 1][n_sq + n + 1];
 	//cout << 0 << " " << 1 << " " << 2 << " ";
 
-	for (int64_t i = 0; i < n + 1; i++)
+	for (int i = 0; i < n + 1; i++)
 	{
-		int64_t c = 0;
-		int64_t b = 0;
-		for (int64_t l = 0; l < n_sq + n + 1; l++)
+		int c = 0;
+		int b = 0;
+		for (int l = 0; l < n_sq + n + 1; l++)
 		{
 
 			if (l == 0)
 			{
 				myfile << 1 << "	";
+				//cout << 1;
 			}
 			else {
 				if (i == 0)
@@ -39,9 +40,11 @@ int makeFile() {
 					if (l > 0 && l <= n)
 					{
 						myfile << 1 << "\t";
+						//cout << 1;
 					}
 					else {
 						myfile << 0 << "\t";
+						//cout << 0;
 					}
 				}
 				else {
@@ -49,9 +52,11 @@ int makeFile() {
 					if (i == b)
 					{
 						myfile << 1 << "\t";
+						//cout << 1;
 					}
 					else {
 						myfile << 0 << "\t";
+						//cout << 0;
 					}
 
 					c++;
@@ -64,20 +69,21 @@ int makeFile() {
 			}
 		}
 		myfile << endl;
+		//cout << endl;
 	}
 
-	for (int64_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
-		for (int64_t j = 0; j < n; j++)
+		for (int j = 0; j < n; j++)
 		{
 			count++;
 			//cout << count << " ";
 			//cout << i << "x + " << j << endl;
-			int64_t x = 0;
-			int64_t c = 0;
-			int64_t b = 0;
-			int64_t y = 0;
-			for (int64_t l = 0; l < n_sq + n + 1; l++)
+			int x = 0;
+			int c = 0;
+			int b = 0;
+			int y = 0;
+			for (int l = 0; l < n_sq + n + 1; l++)
 			{
 
 				//cout << 1 << " ";
@@ -89,9 +95,11 @@ int makeFile() {
 					if (y == c)
 					{
 						myfile << 1 << "\t";
+						//cout << 1;
 					}
 					else {
 						myfile << 0 << "\t";
+						//cout << 0;
 					}
 
 					c++;
@@ -105,13 +113,16 @@ int makeFile() {
 					if (l == i + 1)
 					{
 						myfile << 1 << "\t";
+						//cout << 1;
 					}
 					else {
 						myfile << 0 << "\t";
+						//cout << 0;
 					}
 				}
 			}
 			myfile << endl;
+			//cout << endl;
 		}
 
 	}
@@ -125,19 +136,19 @@ int makeFile() {
 
 
 int readFile() {
-	
 
-	int64_t ans = n_sq + n + 1;
+
+	int ans = n_sq + n + 1;
 	stringstream ss;
 	ss << ans;
 	string str = ss.str();
 	ifstream infile;
 
 	infile.open("solFor" + str + "m.txt");
-	int64_t incidenceArr[n_sq + n + 1][n_sq + n + 1];
-	for (int64_t i = 0; i < n_sq + n + 1; i++)
+	bool incidenceArr[n_sq + n + 1][n_sq + n + 1];
+	for (int i = 0; i < n_sq + n + 1; i++)
 	{
-		for (int64_t j = 0; j < n_sq + n + 1; j++)
+		for (int j = 0; j < n_sq + n + 1; j++)
 		{
 			int temp;
 
@@ -151,9 +162,9 @@ int readFile() {
 
 	infile.close();
 
-	for (int64_t i = 0; i < n_sq + n + 1; i++)
+	for (int i = 0; i < n_sq + n + 1; i++)
 	{
-		for (int64_t j = 0; j < n_sq + n + 1; j++)
+		for (int j = 0; j < n_sq + n + 1; j++)
 		{
 			cout << incidenceArr[i][j] << " ";
 		}
@@ -161,7 +172,7 @@ int readFile() {
 		cout << endl;
 	}
 
-	
+
 
 
 	return 0;
@@ -169,7 +180,7 @@ int readFile() {
 
 int main() {
 
-	//makeFile();
+	makeFile();
 	readFile();
 	
 	return 0;
